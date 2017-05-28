@@ -1,0 +1,85 @@
+﻿<Page
+    x:Class="SiloMeasurement.MainPage"
+    xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+    xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+    xmlns:local="using:SiloMeasurement"
+    xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+    xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+    xmlns:WinRT_Charting ="using:WinRTXamlToolkit.Controls.DataVisualization.Charting"
+    mc:Ignorable="d">
+
+    <Grid x:ConnectionId='1' Name="gridMain" Background="{ThemeResource ApplicationPageBackgroundThemeBrush}">
+        <Grid Margin="10,0,0,0">
+            <Grid.RowDefinitions>
+                <RowDefinition Height="Auto"/>
+                <RowDefinition Height="Auto"/>
+                <RowDefinition Height="Auto"/>
+                <RowDefinition Height="*"/>
+            </Grid.RowDefinitions>
+            <Grid.ColumnDefinitions>
+                <ColumnDefinition Width="Auto"/>
+                <ColumnDefinition Width="Auto"/>
+                <ColumnDefinition Width="*"/>
+            </Grid.ColumnDefinitions>
+
+            <StackPanel Grid.Row="0" Margin="0,10,0,0">
+                <TextBlock x:ConnectionId='15' x:Name="txt2" Text="Lege einen Meldebestand fest:"/>
+                <StackPanel Orientation="Horizontal">
+                    <TextBox x:ConnectionId='16' x:Name="tbReorderLevel" Text="25" Margin="0,5,0,0"/>
+                    <TextBlock x:ConnectionId='17' x:Name="tbSufix" Text="%" VerticalAlignment="Center" Margin="5,5,0,0" FontSize="15"/>
+                    <TextBlock x:ConnectionId='18' x:Name="tbWarning" Foreground="Red" Text="" VerticalAlignment="Center" Margin="10,5,0,0"/>
+                </StackPanel>
+            </StackPanel>
+            <StackPanel Grid.Row="1" Margin="0,10,0,0">
+                <TextBlock x:ConnectionId='10' x:Name="txt1" Text="In welchem Intervall soll gemessen werden?"/>
+                <StackPanel Orientation="Horizontal" Margin="0,5,0,0">
+                    <TextBox x:ConnectionId='13' x:Name="tbTimer" Text="1" Margin="0,0,5,0"/>
+                    <ComboBox x:ConnectionId='14' x:Name="cbxTimeUnit" Margin="0,0,5,0">
+                        <ComboBoxItem Content="Sekunden" Height="100" Width="100"/>
+                        <ComboBoxItem Content="Minuten" Height="100" Width="100" IsSelected="True"/>
+                        <ComboBoxItem Content="Stunden" Height="100" Width="100"/>
+                    </ComboBox>
+                </StackPanel>
+                <StackPanel Orientation="Horizontal" Margin="0,5,0,0">
+                    <Button x:ConnectionId='11' x:Name="btnStart" Content="Start" Margin="0,0,5,0"                       />
+                    <Button x:ConnectionId='12' x:Name="btnStop" Content="Stop" Margin="0,0,5,0"                      />
+                </StackPanel>
+            </StackPanel>
+            <StackPanel Grid.Column="0" Grid.Row="2" Margin="0,5,0,0">
+                <TextBlock x:ConnectionId='9' x:Name="ErrorMsg" Foreground="Red"/>
+            </StackPanel>
+            <StackPanel Grid.Row="0" Grid.Column="1" Margin="20,10,0,0">
+                <TextBlock x:ConnectionId='7' x:Name="txt3" Text="Die momentane Füllmenge liegt bei:"/>
+                <TextBlock x:ConnectionId='8' x:Name="tbCurrentFillLevel" Margin="0,5,0,0"/>
+            </StackPanel>
+            <Grid Grid.Row="2" Grid.Column="1" Margin="75,150,0,0">
+                <ProgressBar x:ConnectionId='6' x:Name="prgbSiloFillLevel" Height="100" Width="200">
+                    <ProgressBar.RenderTransform>
+                        <CompositeTransform Rotation="270"/>
+                    </ProgressBar.RenderTransform>
+                </ProgressBar>
+            </Grid>
+            <Grid Grid.Row="2">
+                <StackPanel Margin="0,10,0,0" VerticalAlignment="Bottom">
+                    <TextBlock x:ConnectionId='3' x:Name="txt4" Text="Trend"/>
+                    <StackPanel Orientation="Horizontal">
+                        <TextBlock x:ConnectionId='4' x:Name="txt5" Text="Zeitraum" VerticalAlignment="Center"/>
+                        <ComboBox x:ConnectionId='5' x:Name="cbxTrendPeriod" Margin="5,0,0,0" VerticalAlignment="Bottom" HorizontalAlignment="Right"                                                   >
+                            <ComboBoxItem Content="Heute" Height="100" Width="100" IsSelected="True"/>
+                            <ComboBoxItem Content="Letzte 7 Tage" Height="100" Width="100"/>
+                            <ComboBoxItem Content="Dieser Monat" Height="100" Width="100"/>
+                        </ComboBox>
+                    </StackPanel>
+                </StackPanel>
+            </Grid>
+            <WinRT_Charting:Chart x:ConnectionId='2' x:Name="LineChartTrend" Title="Trend" Grid.Row="3" Grid.ColumnSpan="3" Width="{Binding ActualWidth, ElementName=gridMain}" HorizontalAlignment="Left" MinHeight="200" MinWidth="400" MaxWidth="1500" MaxHeight="400">
+                <WinRT_Charting:LineSeries Title="Füllmenge in %"
+                        ItemsSource="{Binding Items}"
+                        IndependentValueBinding="{Binding Date}"
+                        DependentValueBinding="{Binding Value}"
+                        IsSelectionEnabled="True"/>
+            </WinRT_Charting:Chart>
+        </Grid>
+    </Grid>
+</Page>
+

@@ -1,0 +1,1 @@
+C:\Users\Daniel\Google Drive\projektmanager\IoT\SiloMeasurement\SiloMeasurement\SiloMeasurement.csproj;x64
