@@ -1,5 +1,5 @@
 # Measurement_with_HC-SR04
-IoT - Measurement with a HC-SR04 sensor, plus optical options and database.
+IoT - Messung mit HC-SR04 
 
 Auf unserem Landwirtschaftlichen Betrieb werden unter anderen auch Fütterungsversuche durchgeführt. Hierfür wird eine große Anzahl an Futterlagerhochsilos vorgehalten. Um die Tiere versorgen zu können, aber auch um kostenaufwendige Fütterungsversuchsreihen nicht
 unterbrechen zu müssen, dürfen diese Silos nicht ungewollt leerfallen. Da sich der rechnerisch zu ermittelnde Verbrauch von dem Tatsächlichen Verbrauch abweichen kann, ist eine visuelle Kontrolle der Füllständeeine routinemäßige Notwendigkeit. Auch hierbei kann es jedes Mal zu Fehleinschätzungen durch den Mitarbeiter kommen. Eine automatisierte Füllstandmessung könnte hier Informationen zuverlässiger und Arbeitszeit liefern. 
